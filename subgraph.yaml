@@ -1,0 +1,56 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: rinkeby
+    source:
+      address: "0x9F00d2d8Ef399b61881C97754082BF4350807B59"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - ErrorOut
+        - BatchTransfered
+        - BatchMinted
+        - BatchBurned
+        - BatchForSale
+        - Bought
+        - OwnershipTransferred
+        - MinterAdded
+        - MinterRemoved
+        - Transfer
+        - Approval
+        - ApprovalForAll
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: ErrorOut(string,uint256)
+          handler: handleErrorOut
+        - event: BatchTransfered(address,string)
+          handler: handleBatchTransfered
+        - event: BatchMinted(address,string)
+          handler: handleBatchMinted
+        - event: BatchBurned(address,string)
+          handler: handleBatchBurned
+        - event: BatchForSale(address,uint256[],string)
+          handler: handleBatchForSale
+        - event: Bought(address,string,uint256)
+          handler: handleBought
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: MinterAdded(indexed address)
+          handler: handleMinterAdded
+        - event: MinterRemoved(indexed address)
+          handler: handleMinterRemoved
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+      file: ./src/mapping.ts

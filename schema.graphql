@@ -1,0 +1,25 @@
+type Token @entity {
+  id: ID!
+  tokenId: String!
+  metaId: String!
+  price: String!
+  state: String!
+  resolvedThing: Thing!
+}
+
+
+type Thing @entity {
+  id: ID!
+  minter: Bytes!
+  burned: Boolean!
+  forSale: Boolean!
+  metaId: String!
+  tokens:[Token!]! @derivedFrom(field: "resolvedThing")
+  resolveStore:  Store!
+}
+
+type Store @entity {
+  id: ID!
+  totalSupply: BigInt!
+  things:[Thing!]! @derivedFrom(field: "resolveStore")
+}
