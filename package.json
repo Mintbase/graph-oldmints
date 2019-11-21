@@ -7,11 +7,26 @@
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ nategeier/oldmints",
     "create-local": "graph create --node http://localhost:8020/ nategeier/oldmints",
     "remove-local": "graph remove --node http://localhost:8020/ nategeier/oldmints",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 nategeier/oldmints"
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 nategeier/oldmints",
+    "prep:nftnyc": "mustache config/nftnyc.json subgraph.template.yaml > subgraph.yaml",
+    "prep:sk8": "mustache config/sk8.json subgraph.template.yaml > subgraph.yaml",
+    "prep:alex": "mustache config/alex.json subgraph.template.yaml > subgraph.yaml",
+    "prep:bb": "mustache config/bb.json subgraph.template.yaml > subgraph.yaml",
+    "prep:exto": "mustache config/exto.json subgraph.template.yaml > subgraph.yaml",
+    "prep:gang": "mustache config/gang.json subgraph.template.yaml > subgraph.yaml",
+    "prep:nano": "mustache config/nano.json subgraph.template.yaml > subgraph.yaml",
+    "deploy:nftnyc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/mintbase-nftnyc",
+    "deploy:sk8": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ nategeier/crypto-skateboards",
+    "deploy:alex": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/alex",
+    "deploy:bb": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/black-box-art",
+    "deploy:exto": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/exto",
+    "deploy:gang": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/gangery",
+    "deploy:nano": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ mintbase/nanosat"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.15.1",
-    "@graphprotocol/graph-ts": "0.15.0",
-    "lodash": "^4.17.15"
+    "@graphprotocol/graph-cli": "0.16.0",
+    "@graphprotocol/graph-ts": "0.16.0",
+    "lodash": "^4.17.15",
+    "mustache": "^3.1.0"
   }
 }
